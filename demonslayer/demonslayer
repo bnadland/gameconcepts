@@ -1,0 +1,211 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use Curses;
+
+my %hero = (
+    health => 100,
+	primary => "Pistol",
+	pri_ammo => 6,
+	secondary => "SMG",
+	sec_ammo => 30,
+	row => 0,
+	col => 0,
+);
+
+my $rows = 20;
+my $cols = 80;
+my $map_rows;
+my $map_cols;
+my $messages_rows;
+my $hud_cols;
+
+my %windows = (
+	"map" => "",
+	"messages" => "",
+	"hud" => "",
+);
+
+my @map;
+
+my @messages = ("Hello World");
+
+sub message {
+	my $message = shift;
+	push(@messages, $message);
+	draw_messages();
+};
+
+sub init {
+	initscr();
+	cbreak();
+	noecho();
+	curs_set(0);
+	keypad(1);
+	#start_color();
+
+	$rows = $LINES;
+
+	$messages_rows = 10;
+	$hud_cols = 42;
+	$map_rows = $rows - $messages_rows;
+	$map_cols = $cols - $hud_cols - 1;
+	
+	$windows{"map"} = newwin($map_rows, $map_cols, 0, 0);
+	keypad($windows{"map"}, 1);
+
+	$windows{"messages"} = newwin($messages_rows, $cols, $rows - $messages_rows, 0);
+
+	$windows{"hud"} = newwin($rows - $messages_rows, $hud_cols, 0, $cols - $hud_cols - 1);
+
+	$hero{"row"} = 1;
+	$hero{"col"} = 1;
+	
+	generate_map();
+};
+
+sub generate_map {
+	my $i;
+	my $j;
+
+	my @row;
+	for($j = 0; $j < $map_cols; $j++) {
+		push(@row, "#");
+	}
+	push(@map, @row);
+	for($i = 0; $i < ($map_rows - 2); $i++) {
+		@row = ();
+		push(@row, "#");
+		for($j = 0; $j < ($map_cols - 2); $j++) {
+			push(@row, ".");
+		}
+		push(@row, "#");
+		push(@map, @row);
+	}
+	@row = ();
+	for($j = 0; $j < $map_cols; $j++) {
+		push(@row, "#");
+	}
+	push(@map, @row);
+};
+
+sub draw_map {
+	my $win = $windows{"map"};
+
+	clear($win);
+	foreach(@map) {
+		foreach($_) {
+			addch($win, $_);
+		}
+	}
+	addch($win, $hero{"row"}, $hero{"col"}, "@");
+	refresh($win);
+};
+
+sub draw_messages {
+	my $win = $windows{"messages"};
+	clear($win);
+	if(@messages < $messages_rows) {
+		foreach (@messages) {
+			addstr($win, $_);
+			addstr($win, "\n");
+		}
+	}
+	else {
+		foreach (@messages[-$messages_rows .. -1]) {
+			addstr($win, $_);
+			addstr($win, "\n");
+		}
+	}
+	refresh($win);
+};
+
+sub draw_hud {
+	my $win = $windows{"hud"};
+	clear($win);
+	box($win, 0, 0);
+	addstr($win, 1, 1, "Health");
+	addstr($win, 2, 1, $hero{'health'});
+	addstr($win, 4, 1, $hero{"primary"});
+	addstr($win, 5, 1, $hero{"pri_ammo"});
+	addstr($win, 7, 1, $hero{"secondary"});
+	addstr($win, 8, 1, $hero{"sec_ammo"});
+	refresh($win);
+};
+
+sub is_walkable {
+
+};
+
+sub action {
+	my $direction = shift;
+
+	if($direction eq "up") {
+		if($hero{"row"} > 0) {
+			$hero{"row"}--;
+		}
+	}
+	elsif($direction eq "down") {
+		if($hero{"row"} < ($map_rows -1) ) {
+			$hero{"row"}++;
+		}
+	}
+	elsif($direction eq "left") {
+		if($hero{"col"} > 0) {
+			$hero{"col"}--;
+		}
+	}
+	elsif($direction eq "right") {
+		if($hero{"col"} < ($map_cols - 1) ) {
+			$hero{"col"}++;
+		}
+	}
+
+	draw_map();
+};
+
+sub main {
+	init();
+
+	message("Welcome to Contractors!");
+	message("You are trapped deep down in the hive.");
+	message("Try to make your way up to other people!");
+	message("Press 'q' to quit.");
+	
+	draw_messages();
+	draw_hud();
+	draw_map();
+
+	my $game_state = "run";
+
+	until ($game_state eq "done"){
+		if($game_state eq "run") {
+
+			my $input = getch($windows{"map"});
+			if($input eq 'q') {
+				$game_state = "done";
+			}
+			elsif($input eq 'k') {
+				action("up");
+			}
+			elsif($input eq 'j') {
+				action("down");
+			}
+			elsif($input eq 'h') {
+				action("left");
+			}
+			elsif($input eq 'l') {
+				action("right");
+			}
+			elsif($input eq '?') {
+				message("Grow up! There is no helping now!");
+			}
+		}
+	}
+
+	endwin();
+};
+
+main();

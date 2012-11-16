@@ -1,0 +1,100 @@
+Weltenwanderer
+==============
+
+Designziele
+-----------
+* Simples System mit wenig Buchhaltung, schnelle Charaktergenerierung
+* Fertigkeitenorientiert, keine festen Klassen
+* Magie und Rituale gefährlich, aber für alle Charaktere möglich
+* Interessantes Kampfsystem (auch ohne Battlemap)
+* Magische Gegenstände, die den Charakter seine Karriere hinweg begleiten
+* Schnelle Vorbereitung durch Zufallsgenerierung
+
+Kulturen
+--------
+Mensch:
+* Bauer
+* Kleinadliger
+* Händler
+* Forscher
+* Dieb
+
+Elf:
+* Kundschafter
+* Magier
+* Schwertmeister
+* Heiler
+* Barde
+
+Zwerg:
+* Wachsoldat
+* Archäologe
+* Handwerker
+* Söldner
+* Bergmann
+
+Ork:
+* Jäger
+* Schamane
+* Fischer
+* Berserker
+* Grabräuber
+
+Charakterdaten
+--------------
+Hitpoints (20)
+Narben
+Ausrüstung
+Fertigkeiten
+Hintergrund
+
+Fertigkeiten
+------------
+Kampf:
+Dolche
+Schwerter
+Axt
+Hammer
+Stabwaffen
+Bogen
+Wurfwaffen
+
+Resistenzen:
+Willenskraft
+Ausweichen
+Leichte Rüstung
+Schwere Rüstung
+
+Foobar:
+Charisma
+Handwerk
+Heimlichkeit
+
+Magie:
+Feuer
+Luft
+Erde
+Wasser
+Schatten
+Leben
+Nekromantie
+
+Ritualmagie
+-----------
+Rituale müssen erforscht und vorbereitet werden und dauern Minuten, Stunden, Tage oder sogar Wochen, geben dafür aber erhebliche Boni bei der Zauberausführung und machen Zauber möglich die sonst den sicheren Tod des Magiers
+bedeuten würden.
+
+Narben
+------
+Wenn ein Charakter stirbt (alle Lebenspunkte verliert, etc.) entscheidet
+der Spielleiter (zum Beispiel per Zufallstabelle) welchen permanenten
+Schaden (Narbe genannt) der Charakter davonträgt. Dieser sollte 
+größtenteils nachteilig für den Charakter sein (lahmer Arm, ein Auge verloren),
+kann aber auch leichte positive Effekte beinhalten (ist im positiven wie im
+negativen anfällig gegen einen bestimmten Zaubertyp).
+
+Die Art des Schadens hängt stark davon ab, wie der Tod eingetreten ist.
+
+Der Spieler kann das akzeptieren und der Charakter wacht nach dem Kampf
+aus seiner Bewusstlosigkeit wieder auf oder den Charakter sterben lassen
+und neu generieren.

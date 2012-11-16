@@ -1,0 +1,52 @@
+Invasion (working title)
+========================
+
+You complete randomized missions to earn Resource Points (RP).
+
+You accumulate these to unlock specific missions to prevent an Invasion
+of your planet.
+
+You also expend these in case you need to replace squad members, want to respec
+equipment in the field or call in air support.
+
+Missions also decrease probabilities for specific enemy types, for example:
+* if you destroy pupae during certain missions you have less flying enemies later on
+* if you destroy eggs before hatching you have less larvae
+
+Enemies (reference https://en.wikipedia.org/wiki/Holometabolism)
+---
+Exotics:
+* Eggs
+* slow moving Larvae (grub worm like)
+* Pupae
+* Warriors (scarab like)
+* Twisted Wings (butterfly and moth like)
+
+ref:
+* Ricinulei
+
+Squad (Vikings Special Forces team)
+---
+a 10 man squad that usually consists of:
+* 4 man fireteam
+* 4 man fireteam
+* 2 man scout/sniper team
+
+Weapons/Equipment
+---
+Armour (x slots):
+* Pistol (basic attack; light secondary for Sniper)
+* Assault Rifle (basic attack)
+* Grenade Launcher (needs Assault Rifle;special attack: AoE damage)
+* Precisionrifle (sniped shot: massive damage against single target)
+* Machine Gun (basic attack; special attack: bullet hell (area denial, massive damage))
+* Com Kit (Air Support, Communication; 1 needed)
+* Tech Kit (Repair, Demolition)
+* Ammo Pack (cuts the cooldown for reloading)
+* TOC (cooldown based invisibility for short amount of time)
+* Energypack (needs TOC; extends invisibility time)
+
+Mechanics
+---
+Reloading, Special Attacks and other use a cooldown mechanic.
+The heavier the load a viking is carrying the longer is the cooldown.
